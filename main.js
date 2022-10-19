@@ -29,3 +29,18 @@ result.innerHTML = data.responseData.translatedText
 })
 .catch(error => console.log(error))
 }
+
+function swap() {
+let change = secLang.value;
+  secLang.value = primaryLang.value;
+  primaryLang.value = change
+  
+fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=${change}|${primaryLang.value}`) 
+.then(res => res.json())
+.then(data => {
+
+result.style.display = "block"
+result.innerHTML = data.responseData.translatedText
+})
+.catch(error => console.log(error))
+}
